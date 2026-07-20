@@ -26,3 +26,12 @@ A backend service for a smart retail dynamic pricing system. The project aims to
 ## Project Goal
 
 The main objective of this project is to develop a scalable backend that supports dynamic pricing strategies for smart markets. In future stages, the system will calculate product prices using real-time data such as stock levels, sensor readings, and product freshness to help minimize food waste and improve inventory management.
+
+## Future Improvements
+
+- Price history
+- Automatic periodic price recalculation
+- Sensor data endpoint
+- Category-based pricing rules
+- Demand factor
+- Logging

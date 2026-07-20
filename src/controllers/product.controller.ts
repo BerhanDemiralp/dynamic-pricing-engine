@@ -39,7 +39,7 @@ export class ProductController {
     response: Response,
   ): Promise<void> => {
     try {
-      const products = await this.productService.getAllProducts();
+      const products = await this.productService.getProducts();
 
       if (products.length === 0) {
         response.status(404).json({

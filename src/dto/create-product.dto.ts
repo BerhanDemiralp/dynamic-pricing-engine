@@ -3,5 +3,8 @@ export interface CreateProductDto {
   basePrice: number;
   stock: number;
   criticalStockThreshold: number;
+  expirationDate: Date;
+  freshnessScore: number;
+  minimumPriceMultiplier: number;
   maxPriceMultiplier: number;
 }

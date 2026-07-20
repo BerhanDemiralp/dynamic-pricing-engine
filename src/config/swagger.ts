@@ -75,6 +75,9 @@ export const swaggerDocument = {
           "basePrice",
           "stock",
           "criticalStockThreshold",
+          "expirationDate",
+          "freshnessScore",
+          "minimumPriceMultiplier",
           "maxPriceMultiplier",
         ],
         properties: {
@@ -84,23 +87,36 @@ export const swaggerDocument = {
           },
           basePrice: {
             type: "integer",
-            description: "Base price stored in cents",
-            minimum: 0,
             example: 4500,
+            description: "Price stored in cents.",
           },
           stock: {
             type: "integer",
-            minimum: 0,
             example: 100,
           },
           criticalStockThreshold: {
             type: "integer",
-            minimum: 0,
             example: 20,
+          },
+          expirationDate: {
+            type: "string",
+            format: "date",
+            example: "2026-07-25",
+          },
+          freshnessScore: {
+            type: "number",
+            minimum: 0,
+            maximum: 100,
+            example: 85,
+          },
+          minimumPriceMultiplier: {
+            type: "number",
+            minimum: 0,
+            maximum: 1,
+            example: 0.5,
           },
           maxPriceMultiplier: {
             type: "number",
-            format: "double",
             minimum: 1,
             example: 1.5,
           },
@@ -112,29 +128,42 @@ export const swaggerDocument = {
         properties: {
           name: {
             type: "string",
-            example: "Updated Fresh Milk",
+            example: "Fresh Milk",
           },
           basePrice: {
             type: "integer",
-            description: "Base price stored in cents",
-            minimum: 0,
-            example: 5000,
+            example: 4500,
+            description: "Price stored in cents.",
           },
           stock: {
             type: "integer",
-            minimum: 0,
-            example: 80,
+            example: 100,
           },
           criticalStockThreshold: {
             type: "integer",
+            example: 20,
+          },
+          expirationDate: {
+            type: "string",
+            format: "date",
+            example: "2026-07-25",
+          },
+          freshnessScore: {
+            type: "number",
             minimum: 0,
-            example: 15,
+            maximum: 100,
+            example: 85,
+          },
+          minimumPriceMultiplier: {
+            type: "number",
+            minimum: 0,
+            maximum: 1,
+            example: 0.5,
           },
           maxPriceMultiplier: {
             type: "number",
-            format: "double",
             minimum: 1,
-            example: 1.4,
+            example: 1.5,
           },
         },
       },

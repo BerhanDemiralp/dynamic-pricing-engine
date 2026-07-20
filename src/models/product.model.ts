@@ -1,26 +1,22 @@
 import { Schema, model, type InferSchemaType } from "mongoose";
 
-export type ProductCreateData = Omit<Product, "createdAt" | "updatedAt">;
-
 const productSchema = new Schema(
   {
     name: {
       type: String,
       required: true,
       trim: true,
-      minlength: 2,
-      maxlength: 120,
     },
 
     basePrice: {
       type: Number,
       required: true,
-      min: 0,
+      min: 1,
     },
 
     currentPrice: {
       type: Number,
-      required: true,
+      default: null,
       min: 0,
     },
 
@@ -36,24 +32,46 @@ const productSchema = new Schema(
       min: 0,
     },
 
+    expirationDate: {
+      type: Date,
+      required: true,
+    },
+
+    freshnessScore: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 100,
+    },
+
+    minimumPriceMultiplier: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 1,
+      default: 0.5,
+    },
+
     maxPriceMultiplier: {
       type: Number,
       required: true,
       min: 1,
-      default: 1.5,
+      default: 1.2,
     },
 
-    isActive: {
-      type: Boolean,
-      required: true,
+    status: {
+      type: String,
+      enum: ["active", "discounted", "critical", "blocked"],
+      default: "active",
     },
   },
   {
     timestamps: true,
-    versionKey: false,
   },
 );
 
 export type Product = InferSchemaType<typeof productSchema>;
+
+export type ProductCreateData = Omit<Product, "createdAt" | "updatedAt">;
 
 export const ProductModel = model<Product>("Product", productSchema);
